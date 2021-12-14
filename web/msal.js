@@ -5,9 +5,9 @@ const msalConfig = {
 };
 let msalInstance;
 
-document.addEventListener('DOMContentLoaded', () => {
+function msalInitialize() {
     msalInstance = new msal.PublicClientApplication(msalConfig);
-});
+}
 
 function login() {
     if (!msalInstance) {
@@ -30,5 +30,10 @@ function getCurrentUser() {
     if (!msalInstance) {
         return null;
     }
-    return msalInstance.getAllAccounts();
+    const data = msalInstance.getAllAccounts();
+    return data && data[0] ? {
+        name: data[0]['name'],
+        tenantId: data[0]['tenantId'],
+        username: data[0]['username'],
+    } : null;
 }

@@ -1,9 +1,8 @@
 import 'package:ejemplo_msauth/msal/msal.dart';
-import 'package:ejemplo_msauth/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AuthScreen extends StatelessWidget {
+class AuthScreen extends GetView<MsalService> {
   const AuthScreen({Key? key}) : super(key: key);
 
   @override
@@ -13,7 +12,7 @@ class AuthScreen extends StatelessWidget {
         child: Text('Auth'),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => getCurrentUser(),
+        onPressed: () => controller.getCurrentUser(),
         child: const Icon(Icons.account_circle),
       ),
     );

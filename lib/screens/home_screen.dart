@@ -1,9 +1,8 @@
 import 'package:ejemplo_msauth/msal/msal.dart';
-import 'package:ejemplo_msauth/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeScreen extends GetView<AuthService> {
+class HomeScreen extends GetView<MsalService> {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -13,7 +12,7 @@ class HomeScreen extends GetView<AuthService> {
         child: Text('Inicio'),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => login(),
+        onPressed: () => controller.login(),
         child: const Icon(Icons.add),
       ),
     );

@@ -1,5 +1,5 @@
+import 'package:ejemplo_msauth/msal/msal.dart';
 import 'package:ejemplo_msauth/navigation.dart';
-import 'package:ejemplo_msauth/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:get/get.dart';
@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 void main() async {
   setUrlStrategy(PathUrlStrategy());
   WidgetsFlutterBinding.ensureInitialized();
-  Get.put(AuthService());
+  MsalService.initialize();
   runApp(const App());
 }
 
