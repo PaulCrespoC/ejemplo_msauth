@@ -22,13 +22,13 @@ class MsalService extends GetxController {
   }
 
   getCurrentUser() {
-    User? user = User.fromJson(js.JsObject.fromBrowserObject(js.context.callMethod('getCurrentUser', [])));
-    if (user != null) {
-      _user.value = user;
+    try {
+      User? user = User.fromJson(js.JsObject.fromBrowserObject(js.context.callMethod('getCurrentUser', [])));
+      _user.value = user ?? User();
+    } catch (e) {
+      _user.value = User();
+    } finally {
       _user.refresh();
-      print('Usuario actual ${user.name}');
-      return;
     }
-    print('User is null');
   }
 }
